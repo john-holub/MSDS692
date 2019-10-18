@@ -1,7 +1,17 @@
 # MSDS692, Data Science Practicum I: 
 **Developing Algorithmic Trading Strategies with QuantConnect and Lean Algorithmic Trading Engine (LEAN)**
 
-1. **Title of the project** :
+**TO DO** :
+1. EDA on "types of days" at very least identify "changepoints"
+2. Several Strategies
+  A. high volume, high volatility universe
+  B. rebalance PP
+    i. shorting ultras portfolio rebalance
+    ii. Options sales on Friday
+  D. gmail reminder strategy from 2013
+
+
+
 
 **Developing Algorithmic Trading Strategies with QuantConnect and Lean Algorithmic Trading Engine (LEAN)**
 
