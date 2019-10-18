@@ -1,13 +1,5 @@
-# MSDS692: Data Science Practicum I: Developing Algorithmic Trading Strategies with QuantConnect and Lean Algorithmic Trading Engine (LEAN)
-
-**Project Proposal (Weeks 1-2)**
-
-1. **Contact Information** :
-
-**John Holub**
-
-john.holub@gmail.com
-303.900.2577
+# MSDS692, Data Science Practicum I: 
+**Developing Algorithmic Trading Strategies with QuantConnect and Lean Algorithmic Trading Engine (LEAN)**
 
 1. **Title of the project** :
 
