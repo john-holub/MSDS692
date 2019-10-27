@@ -1,5 +1,6 @@
 # Developing Algorithmic Trading Strategies
 Project for MSDS692, Data Science Practicum I
+
 John Holub
 
 __________________________________________________________________________________________________________________________________________
@@ -19,7 +20,7 @@ In recent years cloud computing environments has made previous very cumbersome a
 
 It is estimated over &quot;80% of daily trades in United State are machine-led&quot;1 which is up from an estimated 15% in early 2000s1. This suggests a growth market for algorithmic trading and possibly extending its benefits to the non-professional. With this project I intend to explore the possibilities of algorithmic trading, not only in the short-term, but also for long-term investments and development of capital preservation methods applied to traditional portfolio allocations.
 
-# Project Goals
+## Project Goals
 1. Gain familiarity with large price/time series financial data and defining, developing, testing, optimizing and implementing (bring to Production Stage) algorithmic trading strategies.
 2. Develop method(s) for rapid Exploratory Data Analysis (EDA) and Feasibility Analysis (FA) of potential algorithms.
 3. Bring algorithm(s) to production and test performance in live real-time environment (paper trading).
