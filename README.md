@@ -1,5 +1,5 @@
 # MSDS692, Data Science Practicum I: 
-**Developing Algorithmic Trading Strategies with QuantConnect and Lean Algorithmic Trading Engine (LEAN)**
+**Developing Algorithmic Trading Strategies**
 
 **TO DO** :
 1. EDA on "types of days" at very least identify "changepoints"
