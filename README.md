@@ -1,78 +1,117 @@
-# MSDS692, Data Science Practicum I: 
-**Developing Algorithmic Trading Strategies**
+# Developing Algorithmic Trading Strategies
+Project for MSDS692, Data Science Practicum I
+John Holub
 
-**TO DO** :
-1. EDA on "types of days" at very least identify "changepoints"
-2. Several Strategies
-  A. high volume, high volatility universe
-  B. rebalance PP
-    i. shorting ultras portfolio rebalance
-    ii. Options sales on Friday
-  D. gmail reminder strategy from 2013
+__________________________________________________________________________________________________________________________________________
 
+## Table of Contents
+- Summary & Project Goals
+- File Descriptions
+- Exploratory Analysis
+- Algorithmic Systems
+- System Performance Results
+- Acknowledgments and References
 
-
-
-**Developing Algorithmic Trading Strategies with QuantConnect and Lean Algorithmic Trading Engine (LEAN)**
-
-1. **High level description** :
+___
+## Summary
 
 In recent years cloud computing environments has made previous very cumbersome and expensive intraday financial time series data much more accessible than it has ever been. In addition to the data becoming more accessible, cloud computing has also made working with the data much easier as well with online environments, docker images and IDEs.
 
 It is estimated over &quot;80% of daily trades in United State are machine-led&quot;1 which is up from an estimated 15% in early 2000s1. This suggests a growth market for algorithmic trading and possibly extending its benefits to the non-professional. With this project I intend to explore the possibilities of algorithmic trading, not only in the short-term, but also for long-term investments and development of capital preservation methods applied to traditional portfolio allocations.
 
-**Project Goals** :
-
+# Project Goals
 1. Gain familiarity with large price/time series financial data and defining, developing, testing, optimizing and implementing (bring to Production Stage) algorithmic trading strategies.
 2. Develop method(s) for rapid Exploratory Data Analysis (EDA) and Feasibility Analysis (FA) of potential algorithms.
 3. Bring algorithm(s) to production and test performance in live real-time environment (paper trading).
 4. Summarize, visualize and communicate results in useful and attractive format.
 
-1. **Potential types of data science tasks** :
+___
+## File Descriptions
+- Binary Classifier 1.ipynb
+  - CNN model that predicts healthy lungs vs. abnormal lungs using PNG images (Independent of other models)
+- Binary Classifier 2.ipynb
+  - CNN model that predicts healthy lungs vs. abnormal lungs using PNG images (Independent of other models)
+- Bounding Box Predictor (CNN).ipynb
+  - CNN model that predicts the location of pneumonia in DICOM files
+- Classifier Image Processing.ipynb
+  - DICOM to PNG converter
+  - Training/Validation Split
+  - Establishes Directory Architecture
+- Detailed Class Categorical Classifier 1.ipynb
+  - CNN model that predicts healthy lungs vs. abnormal lungs/without pneumonia vs. abnormal lungs/with pneumonia
+- Pneumonia Exploratory Analysis.ipynb
+  - Explores the data for the present competition
 
-1. Classification of differing trading environments (e.g. &quot;bull&quot; or bear&quot;).
-2. Clustering of differing trading betas, potentially to protect portfolio value in adverse trading environments.
-3. Data Engineering of time series data, (e.g. merging event dates, such as earnings, to time series) to include &quot;Data Wrangling&quot; of potential &quot;bad ticks&quot; which can skew system results.
-4. Prediction using time series analysis to predict future price action.
-5. Machine and Supervised Learning to optimize algorithm performance.
-6. Data visualization of classification, clustering and algorithm results.
+___
+## Exploratory Analysis
 
-1. **Data description** :
+It's important to understand the data in our DICOM files before we dive in. Here is an example of a method one can employ to view the contents of a dicom file:
 
-QuantConnect has made data freely available for over &quot;400 TB tick resolution data … That library covers US equities, options, futures, fundamentals, CFD, and forex markets dating back to 1998. There&#39;s a total of 29,000+ stocks, 100+ currency pairs, 70+ CFD contracts, and more.&quot;2
+```python
+import pydicom
+dcm_file = path/to/dicom/file.dcm
+dcm_data = pydicom.read_file(dcm_file)
+print(dcm_data)
+```
+![alttext1](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_1.PNG "Image 1")
 
-As someone who has been struggling to update and maintain local SQL databases of financial data off and on for 15 years, this is an unbelievable resource. While the data is on the could environment, the sheer size of might make working with some time frames (i.e. years or decades) and resolutions (i.e. tick level) difficult.
+Understanding the data from the DICOM files is imperative to being able to ensure one's coneptualization of bounding boxes on the arrays from those files. After all, I am not a radiologist and do not have medical training. Therefore, I need to visualize those boxes in order to augment my knowledge regarding the visual aspects of pneumonia:
 
-1. **How data will you be analyzed** :
+![alttext2](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_2.PNG "Image 2")
 
-1. Clustering of differing trading betas, potentially to protect portfolio value in adverse trading environments.
+Now that we have visualized the bounding boxes and the XRAYs, we should take a look at the demographics of our study participants.
 
-1. Prediction using time series analysis to predict future price action.
-2. Machine and Supervised Learning to optimize algorithm performance.
+#### Frequency Chart of Detailed Class (Colored by Binary Class)
+![alttext3](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_3.PNG "Image 3")
 
-1. **Anticipated difficulties** :
+#### Frequency Chart of Binary Class (Colored by Binary Class)
+![alttext4](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_4.PNG "Image 4")
 
-I plan on using the online platform QuantConnect as much as possible to leverage integrated data access and libraries via its online IDE and docker image. However, while QuantConnect has dozens on popular Python libraries loaded automatically with its Docker image, I can foresee scenarios where I will not be able to import other libraries that are not available.  If this is the case I will likely have today download the open source LEAN Engine that QuantConnect runs on run on a local Virtual Machine (VM).
 
-Another potential difficulty is the limited computing power of the free QuantConnect accounts, limited to 1 x 4GHz Core and 8GB RAM.3  I can increase this to 4 x 4GHz Cores and 12GB RAM for $20/month3 but if this is still not sufficient I will again have to resort to a local VM.
+#### Frequency Chart of Sex (Colored by Binary Class)
+![alttext5](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_5.PNG "Image 5")
 
-Another potential difficulty is the sheer amount of data, I imagine many strategies will only be able to be backtested on limited timeframes (i.e. only backtest year 2018) and subject underliers (i.e. only &quot;APPL&quot; stock or &quot;ES&quot; future, rather than basket of numerous underliers) with potentially less granular resolution (i.e. days, minutes rather than ticks).
+Ensuring that we maintain reasonably consistent demographic spreads when determining training and test sets will be imperative. Exploratory analysis will assist in that effort.
 
-1. **Project timeline suggested** :
+Making sure we understanding the pneumonia spread in these images will help us to identify anomalies in our predictions.
+#### Heatmap of Pneumonia Presence in the Sample Images
+![alttext6](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_6.PNG "Image 6")
 
-- **Weeks 1-2.9** : Refine Project Proposal
-- **Week 3-4** : Test limits/abilities of cloud environment/setup local environment if required. EDA, begin testing trading ideas working toward functioning algorithm (e.g. code works)
-- **Week 5** : Working with functional algorithm(s), work towards profit viability
-- **Week 6** : Backtesting and optimization of algorithm(s)
-- **Week 7** : Live trade of algorithm(s), organize results, update blog, prepare presentation
-- **Week 8** : Present results and make plans for future research
+For a look at some more of the exploratory analysis, please see the *Pneumonia Exploratory Analysis.ipynb* file.
 
-**References** :
+___
+## Model Results
 
-1: Real Finance. (2019) Algo Trading Dominates 80% Of Stock Market | Seeking Alpha. Retrieved September 16, 2019, from [https://seekingalpha.com/article/4230982-algo-trading-dominates-80-percent-stock-market](https://seekingalpha.com/article/4230982-algo-trading-dominates-80-percent-stock-market)
+As mentioned in the summary section, the bounding box detector is vastly superior, in terms of classification, compared to any of my classification models. All models in this repository are convolutional neural networks. The following are some of the most important details from the models here.
+#### Key Metrics from the Bounding Box Detector *(Bounding Box Predictor (CNN).ipynb)*
+![alttext7](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_7.PNG "Image 7")
 
-2: Thapar, Nitin. (2019) The Unconventional Guide To The Best Websites For Quants. Retrieved September 16, 2019, from [https://blog.quantinsti.com/unconventional-guide-best-websites-quants/](https://blog.quantinsti.com/unconventional-guide-best-websites-quants/)
+#### Key Metrics from a Binary Classifier *(Binary Classifier 2.ipynb)*
+![alttext8](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_8.PNG "Image 8")
 
-3: QuantConnect. (2019) Upgrade your Plan | Support QuantConnect - QuantConnect.com. Retrieved September 16, 2019, from [https://www.quantconnect.com/upgrade](https://www.quantconnect.com/upgrade)
 
-4: QuantConnect - Wikipedia. (2019) Retrieved September 16, 2019, from [https://en.wikipedia.org/wiki/QuantConnect](https://en.wikipedia.org/wiki/QuantConnect)
+It's pretty clear that, for now, the Bounding Box Detector *does not* need any help from my current classifiers. 
+
+___
+## Acknowledgments and References
+
+- [Dr. Nathan George](https://www.regis.edu/CCIS/Academics/Departments-and-Faculty/Data-Sciences/George-Nate.aspx) 
+  - For helping with all things df.iterrows
+- [Shervine Amidi](https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly)
+  - For providing detailed work creating generators with keras that I referenced in my bounding box model
+- [Vivek Kumar](https://medium.com/@vivek8981/dicom-to-jpg-and-extract-all-patients-information-using-python-5e6dd1f1a07d)
+  - For providing inspiration for my DICOM/PNG converter
+- [Kevin Mader](https://www.kaggle.com/kmader/lung-opacity-overview/notebook)
+  - For inspriation and code for portions of my exploratory analysis
+- [Guy Zhavi](https://www.kaggle.com/zahaviguy/what-are-lung-opacities/notebook)
+  - For exploratory code and explaining the nuance of lung opacity
+- [Jonne](https://www.kaggle.com/jonnedtc/cnn-segmentation-connected-components/notebook)
+  - For code framework used in Bounding Box Predictor
+- An anonymous radiologist
+  - For looking at my bounding boxes and for explaining where my shortcomings were
+___ 
+
+
+
+
+
