@@ -11,6 +11,7 @@ ________________________________________________________________________________
 - Exploratory Analysis
 - Algorithmic Systems
 - System Performance Results
+- Challenges & Findings
 - Acknowledgments and References
 
 ___
@@ -94,7 +95,19 @@ As mentioned in the summary section, the bounding box detector is vastly superio
 It's pretty clear that, for now, the Bounding Box Detector *does not* need any help from my current classifiers. 
 
 ___
-## Acknowledgments and References
+## Algorithmic Systems
+
+___
+## System Results
+
+___
+## Challenges & Findings
+
+___
+## Challenges & Findings
+
+___
+## References
 
 - [Dr. Nathan George](https://www.regis.edu/CCIS/Academics/Departments-and-Faculty/Data-Sciences/George-Nate.aspx) 
   - For helping with all things df.iterrows
