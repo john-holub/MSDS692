@@ -1,11 +1,11 @@
 # Developing Algorithmic Trading Strategies
 Project for MSDS692, Data Science Practicum I
+
 John Holub
 
 ___
 ## Table of Contents
 - Summary & Project Goals
-- File Descriptions
 - Exploratory Analysis
 - Algorithmic Systems
 - System Performance Results
@@ -25,33 +25,10 @@ It is estimated over &quot;80% of daily trades in United State are machine-led&q
 4. Summarize, visualize and communicate results in useful and attractive format.
 
 ___
-## File Descriptions
-- Binary Classifier 1.ipynb
-  - CNN model that predicts healthy lungs vs. abnormal lungs using PNG images (Independent of other models)
-- Binary Classifier 2.ipynb
-  - CNN model that predicts healthy lungs vs. abnormal lungs using PNG images (Independent of other models)
-- Bounding Box Predictor (CNN).ipynb
-  - CNN model that predicts the location of pneumonia in DICOM files
-- Classifier Image Processing.ipynb
-  - DICOM to PNG converter
-  - Training/Validation Split
-  - Establishes Directory Architecture
-- Detailed Class Categorical Classifier 1.ipynb
-  - CNN model that predicts healthy lungs vs. abnormal lungs/without pneumonia vs. abnormal lungs/with pneumonia
-- Pneumonia Exploratory Analysis.ipynb
-  - Explores the data for the present competition
-
-___
 ## Exploratory Analysis
+It's generally accepted amongst traders that roughly 80% of individual stocks follow the general market. Therefore, it is very important that we test to see how systems perform when compared to the general market. For this 
 
-It's important to understand the data in our DICOM files before we dive in. Here is an example of a method one can employ to view the contents of a dicom file:
 
-```python
-import pydicom
-dcm_file = path/to/dicom/file.dcm
-dcm_data = pydicom.read_file(dcm_file)
-print(dcm_data)
-```
 ![alttext1](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_1.PNG "Image 1")
 
 Understanding the data from the DICOM files is imperative to being able to ensure one's coneptualization of bounding boxes on the arrays from those files. After all, I am not a radiologist and do not have medical training. Therefore, I need to visualize those boxes in order to augment my knowledge regarding the visual aspects of pneumonia:
@@ -79,23 +56,56 @@ Making sure we understanding the pneumonia spread in these images will help us t
 For a look at some more of the exploratory analysis, please see the *Pneumonia Exploratory Analysis.ipynb* file.
 
 ___
-## Model Results
-
-As mentioned in the summary section, the bounding box detector is vastly superior, in terms of classification, compared to any of my classification models. All models in this repository are convolutional neural networks. The following are some of the most important details from the models here.
-#### Key Metrics from the Bounding Box Detector *(Bounding Box Predictor (CNN).ipynb)*
-![alttext7](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_7.PNG "Image 7")
-
-#### Key Metrics from a Binary Classifier *(Binary Classifier 2.ipynb)*
-![alttext8](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_8.PNG "Image 8")
-
-
-It's pretty clear that, for now, the Bounding Box Detector *does not* need any help from my current classifiers. 
-
-___
 ## Algorithmic Systems
+This is a very simple system that shorts equal dollar amounts of 3x Miner ETFs, attempting to capture the ETF rebalance decay. I was pleased to get a rebalancing system coded functionally, however the results are rather poor due to large drawdowns.
 
+CODE:
+```python
+# Developing Algorithmic Trading Strategies Project
+# Data Science Practicum I
+# MSDS692, John Holub
+
+# Simple strategy to capture decay of 3x miner ETFs. Rebalances every 60 days.
+
+class OptionsAlgorithm(QCAlgorithm):
+
+    def Initialize(self):
+        self.SetStartDate(2014, 1, 1)
+        # self.SetEndDate(2018, 12, 31)
+        self.SetCash(100000)
+        self.SetBrokerageModel(BrokerageName.InteractiveBrokersBrokerage)
+        
+        self.equitylist = ["JNUG", "JDST", "DUST", "NUGT","DGAZ","UGAZ"]
+
+        self.noe = len(self.equitylist)
+        def zerolistmaker(n):
+            listofzeros = [0] * n
+            return listofzeros
+
+        self.equity = zerolistmaker(self.noe)
+        self.syl = zerolistmaker(self.noe)
+        
+        for x in range(self.noe):
+            self.equity[x] = self.AddSecurity(SecurityType.Equity, self.equitylist[x], Resolution.Minute)
+            self.syl[x] = self.equity[x].Symbol
+        
+        self.days_counter = 100000
+        
+        #Set Trading and closing Times, for 1 day intra
+        self.Schedule.On(self.DateRules.EveryDay(),self.TimeRules.At(9, 35),Action(self.Rebalance))
+    
+    def Rebalance(self): 
+        
+        self.days_counter+=1
+        
+        if self.days_counter >= 60:
+            for x in range(self.noe):
+                self.SetHoldings(self.syl[x], -1/(self.noe))
+                self.days_counter = 0
+```
 ___
 ## System Results
+
 
 ___
 ## Challenges 
@@ -116,13 +126,13 @@ ___
 
 1. Real Finance. (2019) Algo Trading Dominates 80% Of Stock Market | Seeking Alpha. Retrieved September 16, 2019, from https://seekingalpha.com/article/4230982-algo-trading-dominates-80-percent-stock-market
 
-2.
+2. Quantcademy. (2019) Self-Study Plan for Becoming a Quantitative Trader - Part I | QuantStart. Retrieved October 04, 2019, from https://www.quantstart.com/articles/Self-Study-Plan-for-Becoming-a-Quantitative-Trader-Part-I
 
-3.
+3. Koehrsen, Will. (2019) Stock Prediction in Python - Towards Data Science. Retrieved October 20, 2019, from https://towardsdatascience.com/stock-prediction-in-python-b66555171a2
 
 4. QuantConnect - Wikipedia. (2019) Retrieved September 16, 2019, from https://en.wikipedia.org/wiki/QuantConnect
 
-5.
+5. Reddit. (2019) Algorithmic Trading. Retrieved September 27, 2019, from https://old.reddit.com/r/algotrading/
 ___ 
 
 
