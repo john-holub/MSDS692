@@ -31,30 +31,6 @@ It's generally accepted amongst traders that roughly 80% of individual stocks fo
 
 
 
-Understanding the data from the DICOM files is imperative to being able to ensure one's coneptualization of bounding boxes on the arrays from those files. After all, I am not a radiologist and do not have medical training. Therefore, I need to visualize those boxes in order to augment my knowledge regarding the visual aspects of pneumonia:
-
-![alttext2](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_2.PNG "Image 2")
-
-Now that we have visualized the bounding boxes and the XRAYs, we should take a look at the demographics of our study participants.
-
-#### Frequency Chart of Detailed Class (Colored by Binary Class)
-![alttext3](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_3.PNG "Image 3")
-
-#### Frequency Chart of Binary Class (Colored by Binary Class)
-![alttext4](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_4.PNG "Image 4")
-
-
-#### Frequency Chart of Sex (Colored by Binary Class)
-![alttext5](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_5.PNG "Image 5")
-
-Ensuring that we maintain reasonably consistent demographic spreads when determining training and test sets will be imperative. Exploratory analysis will assist in that effort.
-
-Making sure we understanding the pneumonia spread in these images will help us to identify anomalies in our predictions.
-#### Heatmap of Pneumonia Presence in the Sample Images
-![alttext6](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_6.PNG "Image 6")
-
-For a look at some more of the exploratory analysis, please see the *Pneumonia Exploratory Analysis.ipynb* file.
-
 ___
 ## Algorithmic Systems
 This is a very simple system that shorts equal dollar amounts of 3x Miner ETFs, attempting to capture the ETF rebalance decay. I was pleased to get a rebalancing system coded functionally, however the results are rather poor due to large drawdowns.
@@ -106,8 +82,17 @@ class OptionsAlgorithm(QCAlgorithm):
 ___
 ## System Results
 
-#### Frequency Chart of Binary Class (Colored by Binary Class)
+
 ![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf1.png "Image 1")
+#### 3X ETF SHORT PAIRS Strategy Performance
+
+
+![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf2.png "Image 2")
+#### 3X ETF SHORT PAIRS Cumulative Returns vs SP500 benchmark
+
+![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf3.png "Image 3")
+#### 3X ETF SHORT PAIRS 5 worst drawdowns
+
 
 ___
 ## Challenges 
