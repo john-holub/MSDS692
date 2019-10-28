@@ -1,10 +1,8 @@
 # Developing Algorithmic Trading Strategies
 Project for MSDS692, Data Science Practicum I
-
 John Holub
 
-__________________________________________________________________________________________________________________________________________
-
+___
 ## Table of Contents
 - Summary & Project Goals
 - File Descriptions
@@ -16,10 +14,9 @@ ________________________________________________________________________________
 
 ___
 ## Summary
-
 In recent years cloud computing environments has made previous very cumbersome and expensive intraday financial time series data much more accessible than it has ever been. In addition to the data becoming more accessible, cloud computing has also made working with the data much easier as well with online environments, docker images and IDEs.
 
-It is estimated over &quot;80% of daily trades in United State are machine-led&quot;1 which is up from an estimated 15% in early 2000s1. This suggests a growth market for algorithmic trading and possibly extending its benefits to the non-professional. With this project I intend to explore the possibilities of algorithmic trading, not only in the short-term, but also for long-term investments and development of capital preservation methods applied to traditional portfolio allocations.
+It is estimated over &quot;80% of daily trades in United State are machine-led&quot;<sup>1</sup> which is up from an estimated 15% in early 2000s<sup>1</sup>. This suggests a growth market for algorithmic trading and possibly extending its benefits to the non-professional. With this project I intend to explore the possibilities of algorithmic trading, not only in the short-term, but also for long-term investments and development of capital preservation methods applied to traditional portfolio allocations.
 
 ## Project Goals
 1. Gain familiarity with large price/time series financial data and defining, developing, testing, optimizing and implementing (bring to Production Stage) algorithmic trading strategies.
@@ -101,28 +98,31 @@ ___
 ## System Results
 
 ___
-## Challenges & Findings
+## Challenges 
+- Emerging technology; not very robust documentation, not much on web, community not very active, many features buggy/not active yet
+- Cloud computing platform more restrictive than local or virtual machine
+- Some small fees (datafeeds/subscriptions)
+- Very time consuming to manually go through trades for quality assurance
+- Exceedingly difficult to beat general market benchmark (SP500) and/or traditional allocations (e.g. “Bogle Portfolio”)
 
-___
-## Challenges & Findings
+## Findings
+- Algo trading rapidly become viable for retail investors and traders. 
+- Executions and live deployment APIs work well through retail investment brokers.
+- Countless number of possible strategies, that will appeal to retail investors and traders.
+- Strategies can be coded without tremendous difficulty, but viable strategies that outperform the general market over a long period are exceedingly difficult to discover.
 
 ___
 ## References
 
-- [Dr. Nathan George](https://www.regis.edu/CCIS/Academics/Departments-and-Faculty/Data-Sciences/George-Nate.aspx) 
-  - For helping with all things df.iterrows
-- [Shervine Amidi](https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly)
-  - For providing detailed work creating generators with keras that I referenced in my bounding box model
-- [Vivek Kumar](https://medium.com/@vivek8981/dicom-to-jpg-and-extract-all-patients-information-using-python-5e6dd1f1a07d)
-  - For providing inspiration for my DICOM/PNG converter
-- [Kevin Mader](https://www.kaggle.com/kmader/lung-opacity-overview/notebook)
-  - For inspriation and code for portions of my exploratory analysis
-- [Guy Zhavi](https://www.kaggle.com/zahaviguy/what-are-lung-opacities/notebook)
-  - For exploratory code and explaining the nuance of lung opacity
-- [Jonne](https://www.kaggle.com/jonnedtc/cnn-segmentation-connected-components/notebook)
-  - For code framework used in Bounding Box Predictor
-- An anonymous radiologist
-  - For looking at my bounding boxes and for explaining where my shortcomings were
+1. Real Finance. (2019) Algo Trading Dominates 80% Of Stock Market | Seeking Alpha. Retrieved September 16, 2019, from https://seekingalpha.com/article/4230982-algo-trading-dominates-80-percent-stock-market
+
+2.
+
+3.
+
+4. QuantConnect - Wikipedia. (2019) Retrieved September 16, 2019, from https://en.wikipedia.org/wiki/QuantConnect
+
+5.
 ___ 
 
 
