@@ -29,7 +29,7 @@ ___
 It's generally accepted amongst traders that roughly 80% of individual stocks follow the general market. Therefore, it is very important that we test to see how systems perform when compared to the general market. For this 
 
 
-![alttext1](https://github.com/evangibson/Pneumonia_Detection/blob/master/images/_img_1.PNG "Image 1")
+
 
 Understanding the data from the DICOM files is imperative to being able to ensure one's coneptualization of bounding boxes on the arrays from those files. After all, I am not a radiologist and do not have medical training. Therefore, I need to visualize those boxes in order to augment my knowledge regarding the visual aspects of pneumonia:
 
@@ -106,6 +106,8 @@ class OptionsAlgorithm(QCAlgorithm):
 ___
 ## System Results
 
+#### Frequency Chart of Binary Class (Colored by Binary Class)
+![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf1.png "Image 1")
 
 ___
 ## Challenges 
