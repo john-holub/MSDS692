@@ -82,17 +82,17 @@ class OptionsAlgorithm(QCAlgorithm):
 ___
 ## System Results
 
-
-![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf1.png "Image 1")
 #### 3X ETF SHORT PAIRS Strategy Performance
+![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf1.png "Image 1")
+System returns are good, at 14% CAGR (Compound annual growth rate), however drawndowns make the system totally unviable with 38% max draw-down and numerous other very large drawdowns, as can be seen on the monthly returns.
 
-
-![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf2.png "Image 2")
-#### 3X ETF SHORT PAIRS Cumulative Returns vs SP500 benchmark
-
-![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf3.png "Image 3")
 #### 3X ETF SHORT PAIRS 5 worst drawdowns
+![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf3.png "Image 3")
+Here are the 5 worst drawdowns, where we can see the system had 2 drawdowns of over -30% and several more greater than -20%.
 
+#### 3X ETF SHORT PAIRS performance vs SP500 Benchmark
+![alttext1](https://github.com/john-holub/MSDS692/blob/master/IMAGES/3xETF_perf2.png "Image 3")
+Again the system has decent returns, but as demonstrated by this chart the drawdowns are much worse than the SP5-- benchmark.
 
 ___
 ## Challenges 
